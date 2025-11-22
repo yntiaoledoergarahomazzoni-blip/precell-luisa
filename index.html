@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luisa Lacerda</title>
+
+    <style>
+        /*
+        * 1. Reset Básico
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /*
+        * 2. Estilo do Corpo da Página e Fundo
+        */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Fundo com gradiente suave */
+            background: linear-gradient(135deg, #f0e6f2 0%, #e0eafc 100%); 
+            
+        }
+
+        /*
+        * 3. Estilo do Cartão de Perfil (Card)
+        */
+        .profile-card {
+            width: 80%;
+            max-width: 370px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 20px 30px;
+            text-align: center;
+            /* Sombra suave */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.05);
+            /* Gradiente de fundo sutil no card */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 90%, #f9f9ff 100%);
+            position: relative;
+        }
+
+        /*
+        * 4. Estilo da Foto de Perfil
+        */
+        .profile-pic-container {
+            margin-top: -80px;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-radius: 50%;
+            padding: 4px;
+            /* Gradiente de borda suave */
+            background: linear-gradient(135deg, #fa8900, #f09f2e); 
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff; 
+            display: block;
+        }
+
+        /*
+        * 5. Estilo das Informações do Perfil
+        */
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para a bolha "online" */
+        .status-online {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            margin-bottom: 20px;
+            background-color: #e6f7ea;
+            border-radius: 20px;
+        }
+
+        .status-online::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .location {
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Ícone de localização */
+        .location::before {
+            content: '📍';
+            margin-right: 8px;
+            color: #E91E63;
+        }
+        
+        /* Classe para esconder a localização se não for encontrada */
+        .location.hidden {
+            display: none;
+        }
+
+        .catchphrase {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+
+        /*
+        * 6. Estilo dos Botões de Ação
+        */
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .privacy-icon {
+            width: 110px; 
+            height: 30px; 
+            margin-right: 0; 
+        }
+
+        .telegram-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px; 
+            vertical-align: middle;
+        }
+
+        .btn-telegram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-color: #27a6e6;
+        }
+
+        .btn-chamada {
+            background: linear-gradient(90deg, #e3681c, #f29e38);
+            color: #ffffff;
+            font-size: 18px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-chamada:hover {
+            opacity: 0.9;
+            box-shadow: 0 6px 15px rgba(242, 152, 56, 0.4);
+        }
+
+        /*
+        * 7. Estilo do Rodapé e Aviso Legal
+        */
+        .footer-legal {
+            margin-top: 20px;
+            font-size: 10px;
+            color: #aaa;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+
+        <div class="profile-pic-container">
+            <!-- Certifique-se de que logo.png está na mesma pasta -->
+            <img src="logo.png" alt="Foto de Perfil" class="profile-pic">
+        </div>
+
+        <div class="profile-name">Luisa Lacerda</div>
+        
+        <div class="status-online">online</div>
+        
+        <!-- Container de Localização -->
+        <div class="location hidden" id="location-container">
+            <span id="location-text">Carregando...</span>
+        </div>
+
+        <div class="catchphrase">
+            VENHA ME CONHECER!!</br>
+                 👇🏻❤️‍🔥
+        </div>
+
+        <a href="https://privacy.com" class="button-link btn-privacy" target="_blank">
+            <!-- Certifique-se de que privacy.png está na mesma pasta -->
+            <img src="privacy.png" alt="Ícone de Privacidade" class="icon-image privacy-icon">
+        </a>
+
+        <a href="https://t.me/lacerdaluisa" class="button-link btn-telegram" target="_blank">
+            <!-- Certifique-se de que telegram.png está na mesma pasta -->
+            <img src="telegram.png" alt="Ícone do Telegram" class="telegram-icon">
+            VIP TELEGRAM
+        </a>
+
+        <p class="footer-legal">
+            Todos os diretos de imagem reservados a Luisa Lacerda sob a Lei n° 9.610/98
+        </p>
+
+    </div>
+
+    <!-- SCRIPT DE LOCALIZAÇÃO ADICIONADO -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const locationContainer = document.getElementById('location-container');
+        const locationTextElement = document.getElementById('location-text');
+
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.city && data.region) {
+                    // Uso de crase (`) para interpolação de variáveis
+                    locationTextElement.textContent = `${data.city} - ${data.region}`;
+                    locationContainer.classList.remove('hidden');
+                } else {
+                    locationContainer.classList.add('hidden');
+                }
+            })
+            .catch(() => {
+                locationContainer.classList.add('hidden');
+                console.error('Erro ao buscar a localização.');
+            });
+    });
+    </script>
+
+</body>
+</html>
